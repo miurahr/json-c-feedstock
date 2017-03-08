@@ -24,7 +24,7 @@ test:
         - test -f ${PREFIX}/lib/libjson-c.a  # [unix]
         - test -f ${PREFIX}/lib/libjson-c.so  # [linux]
         - test -f ${PREFIX}/lib/libjson-c.dylib  # [osx]
-        - conda inspect linkages -n _test json-c  # [linux]
+        - conda inspect linkages -p ${PREFIX} json-c  # [linux]
 
 about:
     home: https://github.com/json-c/json-c/wiki
