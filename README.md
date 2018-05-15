@@ -7,21 +7,23 @@ Package license: MIT
 
 Feedstock license: BSD 3-Clause
 
-Summary: A JSON implementation in C
+Summary: A JSON implementation in C.
 
 
 
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/json-c-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/json-c-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/json-c-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/json-c-feedstock)
-Windows: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/json-c-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/json-c-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/json-c-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/json-c-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/json-c-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/json-c-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/json-c/badges/version.svg)](https://anaconda.org/conda-forge/json-c)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/json-c/badges/downloads.svg)](https://anaconda.org/conda-forge/json-c)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-json--c-green.svg)](https://anaconda.org/conda-forge/json-c) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/json-c.svg)](https://anaconda.org/conda-forge/json-c) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/json-c.svg)](https://anaconda.org/conda-forge/json-c) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/json-c.svg)](https://anaconda.org/conda-forge/json-c) |
 
 Installing json-c
 =================
@@ -66,6 +68,7 @@ To manage the continuous integration and simplify feedstock maintenance
 Using the ``conda-forge.yml`` within this repository, it is possible to re-render all of
 this feedstock's supporting files (e.g. the CI configuration files) with ``conda smithy rerender``.
 
+For more information please check the [conda-forge documentation](https://conda-forge.org/docs/).
 
 Terminology
 ===========
