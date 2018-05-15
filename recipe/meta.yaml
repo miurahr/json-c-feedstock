@@ -1,23 +1,27 @@
-{% set version = "0.12.1" %}
+{% set version = "0.13.1-20180305" %}
 
 package:
   name: json-c
-  version: {{ version }}
+  version: {{ version.split('-')[0] }}
 
 source:
   fn: json-c-{{ version }}.tar.gz
-  url: https://s3.amazonaws.com/json-c_releases/releases/json-c-{{ version }}.tar.gz
-  sha256: 2a136451a7932d80b7d197b10441e26e39428d67b1443ec43bbba824705e1123
+  url: https://github.com/json-c/json-c/archive/json-c-{{ version }}.tar.gz
+  sha256: 5d867baeb7f540abe8f3265ac18ed7a24f91fe3c5f4fd99ac3caba0708511b90
 
 build:
   number: 0
-  skip: True  # [win]
 
 requirements:
   build:
-    - autoconf
-    - automake
-    - libtool
+    - {{ compiler('c') }}
+  host:
+    - autoconf  # [unix]
+    - automake  # [unix]
+    - libtool  # [unix]
+
+    - cmake  # [win]
+    - vc  # [win]
 
 test:
   commands:
