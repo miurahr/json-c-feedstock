@@ -1,30 +1,39 @@
-{% set version = "0.12.1" %}
+{% set version = "0.13.1-20180305" %}
 
 package:
   name: json-c
-  version: {{ version }}
+  version: {{ version.split('-')[0] }}
 
 source:
   fn: json-c-{{ version }}.tar.gz
-  url: https://s3.amazonaws.com/json-c_releases/releases/json-c-{{ version }}.tar.gz
-  sha256: 2a136451a7932d80b7d197b10441e26e39428d67b1443ec43bbba824705e1123
+  url: https://github.com/json-c/json-c/archive/json-c-{{ version }}.tar.gz
+  sha256: 5d867baeb7f540abe8f3265ac18ed7a24f91fe3c5f4fd99ac3caba0708511b90
+  patches:
+    - 00-add-library-inc.patch
 
 build:
   number: 0
-  skip: True  # [win]
 
 requirements:
   build:
-    - autoconf
-    - automake
-    - libtool
+    - {{ compiler('c') }}
+    - autoconf  # [unix]
+    - automake  # [unix]
+    - libtool  # [unix]
+    - cmake  # [win]
+  host:
+    - msinttypes  # [win and vc<=9]
 
 test:
   commands:
     - test -f ${PREFIX}/lib/libjson-c.a  # [unix]
     - test -f ${PREFIX}/lib/libjson-c.so  # [linux]
     - test -f ${PREFIX}/lib/libjson-c.dylib  # [osx]
-    - conda inspect linkages -p ${PREFIX} json-c  # [linux]
+    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
+
+    - if not exist %LIBRARY_BIN%/json-c.dll exit 1  # [win]
+    - if not exist %LIBRARY_LIB%/json-c.lib exit 1  # [win]
 
 about:
   home: https://github.com/json-c/json-c/wiki
@@ -35,3 +44,4 @@ about:
 extra:
   recipe-maintainers:
     - ocefpaf
+    - sodre
