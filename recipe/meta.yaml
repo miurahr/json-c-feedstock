@@ -17,11 +17,9 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-  host:
     - autoconf  # [unix]
     - automake  # [unix]
     - libtool  # [unix]
-
     - cmake  # [win]
     - msinttypes  # [win and vc <=9]
     - vc  # [win]
