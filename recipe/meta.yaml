@@ -8,6 +8,8 @@ source:
   fn: json-c-{{ version }}.tar.gz
   url: https://github.com/json-c/json-c/archive/json-c-{{ version }}.tar.gz
   sha256: 5d867baeb7f540abe8f3265ac18ed7a24f91fe3c5f4fd99ac3caba0708511b90
+  patches:
+    - 00-add-library-inc.patch
 
 build:
   number: 0
@@ -21,6 +23,7 @@ requirements:
     - libtool  # [unix]
 
     - cmake  # [win]
+    - msinttypes  # [win]
     - vc  # [win]
 
 test:
