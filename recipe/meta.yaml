@@ -23,7 +23,7 @@ requirements:
     - libtool  # [unix]
 
     - cmake  # [win]
-    - msinttypes  # [win]
+    - msinttypes  # [win and vc <=9]
     - vc  # [win]
 
 test:
