@@ -21,7 +21,7 @@ requirements:
     - automake  # [unix]
     - libtool  # [unix]
     - cmake  # [win]
-    - msinttypes  # [win and vc <=9]
+    - msinttypes  # [win and vc<=9]
 
 test:
   commands:
