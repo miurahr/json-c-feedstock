@@ -32,6 +32,9 @@ test:
     - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
     - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
+    - if not exist ${LIBRARY_BIN}/json-c.dll exit 1  # [win]
+    - if not exist ${LIBRARY_LIB}/json-c.lib exit 1  # [win]
+
 about:
   home: https://github.com/json-c/json-c/wiki
   license: MIT
