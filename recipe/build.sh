@@ -9,3 +9,5 @@ export  CFLAGS="-Wno-error $CFLAGS"
 make
 make check
 make install
+
+find $PREFIX -name '*.la' -delete
