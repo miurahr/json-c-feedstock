@@ -1,33 +1,33 @@
-{% set version = "0.13.1-20180305" %}
+{% set version = "0.13.1" %}
 
 package:
   name: json-c
   version: {{ version.split('-')[0] }}
 
 source:
-  url: https://github.com/json-c/json-c/archive/json-c-{{ version }}.tar.gz
-  sha256: 5d867baeb7f540abe8f3265ac18ed7a24f91fe3c5f4fd99ac3caba0708511b90
+  url: https://s3.amazonaws.com/json-c_releases/releases/json-c-{{ version }}.tar.gz
+  sha256: b87e608d4d3f7bfdd36ef78d56d53c74e66ab278d318b71e6002a369d36f4873
   patches:
     - 00-add-library-inc.patch
 
 build:
-  number: 1
+  number: 1001
 
 requirements:
   build:
     - {{ compiler('c') }}
-    - autoconf  # [unix]
-    - automake  # [unix]
-    - libtool  # [unix]
+    - autoconf  # [not win]
+    - automake  # [not win]
+    - libtool  # [not win]
     - cmake  # [win]
+    - make
   host:
     - msinttypes  # [win and vc<=9]
 
 test:
   commands:
-    - test -f ${PREFIX}/lib/libjson-c.a  # [unix]
+    - test -f ${PREFIX}/lib/libjson-c.a  # [not win]
     - test -f ${PREFIX}/lib/libjson-c${SHLIB_EXT}  # [not win]
-
     - if not exist %LIBRARY_BIN%/json-c.dll exit 1  # [win]
     - if not exist %LIBRARY_LIB%/json-c.lib exit 1  # [win]
 
@@ -35,7 +35,7 @@ about:
   home: https://github.com/json-c/json-c/wiki
   license: MIT
   license_file: COPYING
-  summary: 'A JSON implementation in C.'
+  summary: 'A JSON implementation in C'
 
 extra:
   recipe-maintainers:
